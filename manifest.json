@@ -1,0 +1,15 @@
+{
+    "name": "com.ubuntu.developer.username.lotobr",
+    "description": "description of lotoBr",
+    "framework": "ubuntu-sdk-14.04-qml",
+    "architecture": "all",
+    "title": "lotoBr",
+    "hooks": {
+        "lotoBr": {
+            "apparmor": "lotoBr.json",
+            "desktop": "lotoBr.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": ""
+}

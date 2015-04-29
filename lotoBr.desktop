@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=lotoBr
+Exec=/usr/bin/qmlscene $@ /usr/share/lotoBr/lotoBr.qml
+Icon=qmlscene
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

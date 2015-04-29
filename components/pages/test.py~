@@ -1,0 +1,11 @@
+#! /urs/bin/python3
+#import ejdb
+import pyotherside
+
+
+print("python: qobjecte imported")
+
+def func(text):
+	text.text = "So happy do be here..!"
+	print(text.something(4,5))
+	return 123
