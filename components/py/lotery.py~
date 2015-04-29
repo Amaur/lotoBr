@@ -11,8 +11,8 @@ def webConnect():
         if(obj.code==200):
             return (obj.code)
     except web.URLError as e:
-        print(e)
-        print("Network connection Error")
+        #print(e)
+        return("Network connection Error")
 
 def read_data(code,url):
 
@@ -31,7 +31,7 @@ def dado_concurso(spec):
     dado=["Numero","Data","Cidade","Local","Arrecadacao total","Valor acumulado"]
     del response["concurso"]['premiacao']
     del response["concurso"]['numeros_sorteados']
-    print("Dados do concurso: ")
+    #print("Dados do concurso: ")
     valores =[response["concurso"]["numero"],response["concurso"]["data"],response["concurso"]["cidade"],response["concurso"]["local"],response["concurso"]["arrecadacao_total"],response["concurso"]["valor_acumulado"]]
     i=0
     concurs_dado=[]
@@ -39,7 +39,7 @@ def dado_concurso(spec):
     while i < len(dado):
         concurs_dado.append({"name":dado[i],"valor":valores[i]})
         i=i+1
-    print(concurs_dado)
+    return(concurs_dado)
 
 
 def resul_concurso(spec):
@@ -47,16 +47,16 @@ def resul_concurso(spec):
     url=url+spec
     thecode=webConnect()
     response=read_data(thecode,url)
-    print("Resultados do sorteio:")
-    print(response["concurso"]["numeros_sorteados"])
+    #print("Resultados do sorteio:")
+    return(response["concurso"]["numeros_sorteados"])
 
 def prox_concurso(spec):
     url = "http://developers.agenciaideias.com.br/loterias"
     url=url+spec
     thecode=webConnect()
     response=read_data(thecode,url)
-    print("Dado Proximo concurso:")
-    print(response["proximo_concurso"])
+    #print("Dado Proximo concurso:")
+    return(response["proximo_concurso"])
 
 def mega_virada(spec):
     url = "http://developers.agenciaideias.com.br/loterias"

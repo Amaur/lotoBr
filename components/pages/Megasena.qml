@@ -10,14 +10,43 @@ Page{
     title: "Megasena"
     //property bool loading: true
 
-
-
-
-
-
+   Flickable {
+       id: flickable
+                   anchors.fill: parent
+                   //contentHeight:rec.height/2
+                   //contentWidth: rec.width
     Rectangle{
-          anchors.centerIn: parent
+      id:rec
+        anchors.fill: parent
 
+        ListView {
+            anchors.fill: parent
+
+            model: ListModel {
+                id: concurso
+            }
+
+            delegate: Text {
+                // Both "name" and "team" are taken from the model
+                text: name +' : '+valor
+
+            }
+        }
+
+        ListView {
+            id:view
+            anchors.fill: parent
+
+            model: ListModel {
+                id: numsorteado
+            }
+
+            delegate: Text {
+                // Both "name" and "team" are taken from the model
+                text: modelData
+
+            }
+        }
 
           Python{
               id:py
@@ -26,35 +55,27 @@ Page{
                           console.log('python error: ' + traceback);
 
                       }
-    /*
-              Component.onCompleted: {
-
-                  addImportPath(Qt.resolvedUrl('py/'));
-                  importModule('connect',function(){
-                    console.log("Qml: Qobject imported")
-                     //var func = evaluate("mega.web_connect");
-                      call('connect.webConnect', [],function(result){
-                       console.log("got result: "+result);
-                          mytext.something(result);
-                      });
-                  })
-
-              }*/
-          }
-
-
-          Text {
-              id: mytext
-              text: "Hello there"
-
-
 
           }
+
+
 Component.onCompleted: {
+    var url ="/megasena/json";
+
    Myfunc.checkInternet();
+    Myfunc.dadoConcurso(url)
+    //Myfunc.numConcurso(url)
 
 }
 
+//PullToRefresh {
+    //parent: flickable
+                //refreshing: view.model.status === XmlListModel.Loading
+    //var url ="/megasena/json";
+              //  onRefresh:  Myfunc.dadoConcurso("/megasena/json")
+           // }
+
     }
+   }
 
 }

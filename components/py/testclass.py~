@@ -1,3 +1,0 @@
-from connect import TheNet
-
-print(TheNet.webConnect())

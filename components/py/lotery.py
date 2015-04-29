@@ -48,7 +48,7 @@ def resul_concurso(spec):
     thecode=webConnect()
     response=read_data(thecode,url)
     #print("Resultados do sorteio:")
-    return(response["concurso"]["numeros_sorteados"])
+    return([{"resul":str(x)} for x in response["concurso"]["numeros_sorteados"]])
 
 def prox_concurso(spec):
     url = "http://developers.agenciaideias.com.br/loterias"
